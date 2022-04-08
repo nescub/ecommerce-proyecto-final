@@ -1,11 +1,18 @@
 import fs from 'fs'
 
+import path from 'path'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 function getPathConfigFile() {
     if (process.env.NODE_ENV  == 'desa') {
-        return './config/cfg_desa.properties'
+        return path.resolve(__dirname, '../../config/cfg_desa.properties')
     }
 
-    return './config/cfg.properties'
+    return path.resolve(__dirname, '../../config/cfg.properties')
 }
 
 function getSystemConfigurationParameters() {
